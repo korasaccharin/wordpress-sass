@@ -22,13 +22,11 @@ Install the plugin
 
  Add the following to functions.php in your theme and include a wpsass_define_stylesheet call for each stylesheet:
 
-    // SASS/SCSS Stylesheet Definition  
     function generate_css() {  
-        if (function_exists('wpsass_define_stylesheet')) {  
-            wpsass_define_stylesheet("mystyle.scss");  
-        }  
+        if (!function_exists('wpsass_define_stylesheet')) return false;
+        wpsass_define_stylesheet("mystyle.scss");
     }  
-    add_action( 'after_setup_theme', 'generate_css' );  
+    add_action('after_setup_theme', 'generate_css');
 
 Create the source .sass or .scss file in your theme directory (i.e. mystyle.sass)
 
