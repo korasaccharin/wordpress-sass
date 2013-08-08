@@ -16,22 +16,27 @@ This plugin enables any Wordpress Theme to use SASS stylesheets.  In a wordpress
 
 ## Installation
 
-1. Install the plugin
-2. Add the following to functions.php in your theme and include a wpsass_define_stylesheet call for each stylesheet:
+Install the plugin
+
+ Add the following to functions.php in your theme and include a wpsass_define_stylesheet call for each stylesheet:
 
     // SASS/SCSS Stylesheet Definition  
     function generate_css() {  
-        if(function_exists('wpsass_define_stylesheet')) {  
+        if (function_exists('wpsass_define_stylesheet')) {  
             wpsass_define_stylesheet("mystyle.scss");  
         }  
     }  
     add_action( 'after_setup_theme', 'generate_css' );  
 
-3. Create the source .sass or .scss file in your theme directory (i.e. mystyle.sass)
-4. Create the target .css as an empty file in your theme directory (i.e. mystyle.css)
-5. For obvious reasons, the target file must be writable by wordpress
-6. Whenever your source file is updated and has a newer date than the target file, the target will be automatically regenerated.  
-7. The plugin will automatically add the target stylesheet to your theme.
+Create the source .sass or .scss file in your theme directory (i.e. mystyle.sass)
+
+Create the target .css as an empty file in your theme directory (i.e. mystyle.css)
+
+For obvious reasons, the target file must be writable by wordpress
+
+Whenever your source file is updated and has a newer date than the target file, the target will be automatically regenerated.  
+
+The plugin will automatically add the target stylesheet to your theme.
 
 ## Frequently Asked Questions
 
