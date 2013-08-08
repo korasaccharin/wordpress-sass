@@ -134,10 +134,16 @@ if (!class_exists('WP_SASS')) {
     class WP_SASS
     {
         private $debug_mode;
-        public function __construct()
+        private static $_instance;
+        private function __construct()
         {
             $this->debug_mode = false;
         }
+        public static function instance()
+        {
+            if (is_null(self::$_instance)) self::$_instance = new WP_SASS();
+            return self::$_instance;
+        }
     }
-    new WP_SASS();
+    WP_SASS::instance();
 }
