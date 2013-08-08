@@ -22,7 +22,6 @@ Install the plugin
 
     function generate_css() {  
         if (function_exists('wpsass_define_stylesheet')) return false;
-        
         wpsass_define_stylesheet("mystyle.scss");
     }  
     add_action('after_setup_theme', 'generate_css');
