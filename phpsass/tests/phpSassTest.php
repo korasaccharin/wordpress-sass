@@ -38,7 +38,7 @@ class PHPSass_TestCase extends PHPUnit_Framework_TestCase
 
     }
     // Try to use libraries first.
-    elseif (($library_path = dirname(__FILE__) . '/..') && file_exists($library_path . '/SassParser.php')) {
+    elseif (($library_path = dirname(__FILE__) . '/..') && is_file($library_path . '/SassParser.php')) {
       $this->phpsass_library_path = $library_path;
     }
 
@@ -405,5 +405,14 @@ class PHPSass_TestCase extends PHPUnit_Framework_TestCase
   public function testMixinSetvar()
   {
     $this->runSassTest('mixin_setvar.scss');
+  }
+
+  public function testTokenLevelException() {
+      try {
+        $this->runSassTest('token_level.scss', false, array('debug' => true));
+      } catch (SassException $e) {
+          $message = 'Too many closing brackets';
+          $this->assertEquals($message, substr($e->getMessage(), 0, strlen($message)));
+      }
   }
 }

@@ -35,7 +35,7 @@ class SassMixinDefinitionNode extends SassNode
 
   /**
    * SassMixinDefinitionNode constructor.
-   * @param object source token
+   * @param object $token source token
    * @return SassMixinDefinitionNode
    */
   public function __construct($token)
@@ -54,7 +54,7 @@ class SassMixinDefinitionNode extends SassNode
   /**
    * Parse this node.
    * Add this mixin to  the current context.
-   * @param SassContext the context in which this node is parsed
+   * @param SassContext $context the context in which this node is parsed
    * @return array the parsed node - an empty array
    */
   public function parse($context)
@@ -75,7 +75,7 @@ class SassMixinDefinitionNode extends SassNode
 
   /**
    * Returns a value indicating if the token represents this type of node.
-   * @param object token
+   * @param object $token token
    * @return boolean true if the token represents this type of node, false if not
    */
   public static function isa($token)

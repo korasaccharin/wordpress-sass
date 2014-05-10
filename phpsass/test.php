@@ -57,6 +57,7 @@
     }
 
     function test_files($files, $dir = '.') {
+	  $result = null;
       sort($files);
       foreach ($files as $i => $file) {
         $name = explode('.', $file);
@@ -67,13 +68,13 @@
           try {
             $result = $fn($dir . '/' . $file);
           } catch (Exception $e) {
-            $result = $e->__toString();
+            return $e->__toString();
           }
           file_put_contents('/tmp/scss_test_' . $i, trim($result) . "\n");
         }
       }
 
-      $diff = exec('diff -ibwB /tmp/scss_test_0 /tmp/scss_test_1', $out);
+      exec('diff -ibwB /tmp/scss_test_0 /tmp/scss_test_1', $out);
       if (count($out)) {
         if (isset($_GET['full'])) {
           $out[] = "\n\n\n" . $result;

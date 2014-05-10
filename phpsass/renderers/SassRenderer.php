@@ -34,7 +34,7 @@ class SassRenderer
 
   /**
    * Returns the renderer for the required render style.
-   * @param string render style
+   * @param string $style render style
    * @return SassRenderer
    */
   public static function getRenderer($style)

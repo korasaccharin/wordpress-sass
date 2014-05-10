@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: WordPress SASS
- * Plugin URI:  https://github.com/korasaccharin/wordpress-sass
+ * Plugin Name: SASS
+ * Plugin URI:  https://github.com/korasaccharin/wp-sass
  * Description: SASS support for WordPress. Automated SASS stylesheets generation. Based on Ed Burns's plugin
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Kora Saccharin
  * Author URI:  http://www.kora-saccharin.com
  * License:     GPL2

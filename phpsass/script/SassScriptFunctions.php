@@ -58,13 +58,13 @@ class SassScriptFunctions
 
   /**
    * Creates a SassColour object from red, green, and blue values.
-   * @param SassNumber the red component.
+   * @param SassNumber $red the red component.
    * A number between 0 and 255 inclusive, or between 0% and 100% inclusive
-   * @param SassNumber the green component.
+   * @param SassNumber $green the green component.
    * A number between 0 and 255 inclusive, or between 0% and 100% inclusive
-   * @param SassNumber the blue component.
+   * @param SassNumber $blue the blue component.
    * A number between 0 and 255 inclusive, or between 0% and 100% inclusive
-   * @return new SassColour SassColour object
+   * @return SassColour new SassColour SassColour object
    * @throws SassScriptFunctionException if red, green, or blue are out of bounds
    */
   public static function rgb($red, $green, $blue)
@@ -89,7 +89,7 @@ class SassScriptFunctions
    * @param SassColour a SassColour object
    * @param SassNumber The alpha channel. A number between 0 and 1.
    *
-   * @return new SassColour SassColour object
+   * @return SassColour new SassColour SassColour object
    * @throws SassScriptFunctionException if any of the red, green, or blue
    * colour components are out of bounds, or or the colour is not a colour, or
    * alpha is out of bounds
@@ -135,13 +135,13 @@ class SassScriptFunctions
    * Creates a SassColour object from hue, saturation, and lightness.
    * Uses the algorithm from the
    * {@link http://www.w3.org/TR/css3-colour/#hsl-colour CSS3 spec}.
-   * @param float The hue of the colour in degrees.
+   * @param float $h The hue of the colour in degrees.
    * Should be between 0 and 360 inclusive
-   * @param mixed The saturation of the colour as a percentage.
+   * @param mixed $s The saturation of the colour as a percentage.
    * Must be between '0%' and 100%, inclusive
-   * @param mixed The lightness of the colour as a percentage.
+   * @param mixed $l The lightness of the colour as a percentage.
    * Must be between 0% and 100%, inclusive
-   * @return new SassColour The resulting colour
+   * @return SassColour The resulting colour
    * @throws SassScriptFunctionException if saturation or lightness are out of bounds
    */
   public static function hsl($h, $s, $l)
@@ -155,14 +155,14 @@ class SassScriptFunctions
   /**
    * Creates a SassColour object from hue, saturation, lightness and alpha
    * channel (opacity).
-   * @param SassNumber The hue of the colour in degrees.
+   * @param SassNumber $h The hue of the colour in degrees.
    * Should be between 0 and 360 inclusive
-   * @param SassNumber The saturation of the colour as a percentage.
+   * @param SassNumber $s The saturation of the colour as a percentage.
    * Must be between 0% and 100% inclusive
-   * @param SassNumber The lightness of the colour as a percentage.
+   * @param SassNumber $l The lightness of the colour as a percentage.
    * Must be between 0% and 100% inclusive
-   * @param float The alpha channel. A number between 0 and 1.
-   * @return new SassColour The resulting colour
+   * @param float $a The alpha channel. A number between 0 and 1.
+   * @return SassColour The resulting colour
    * @throws SassScriptFunctionException if saturation, lightness or alpha are
    * out of bounds
    */
@@ -185,8 +185,8 @@ class SassScriptFunctions
 
   /**
    * Returns the red component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The red component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The red component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function red($colour)
@@ -198,8 +198,8 @@ class SassScriptFunctions
 
   /**
    * Returns the green component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The green component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The green component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function green($colour)
@@ -211,8 +211,8 @@ class SassScriptFunctions
 
   /**
    * Returns the blue component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The blue component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The blue component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function blue($colour)
@@ -224,8 +224,8 @@ class SassScriptFunctions
 
   /**
    * Returns the hue component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The hue component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The hue component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function hue($colour)
@@ -237,8 +237,8 @@ class SassScriptFunctions
 
   /**
    * Returns the saturation component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The saturation component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The saturation component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function saturation($colour)
@@ -250,8 +250,8 @@ class SassScriptFunctions
 
   /**
    * Returns the lightness component of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The lightness component of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The lightness component of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function lightness($colour)
@@ -263,8 +263,8 @@ class SassScriptFunctions
 
   /**
    * Returns the alpha component (opacity) of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The alpha component (opacity) of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The alpha component (opacity) of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    *
    * RL modified so that the filter: alpha function doesn't bork
@@ -282,8 +282,8 @@ class SassScriptFunctions
 
   /**
    * Returns the alpha component (opacity) of a colour.
-   * @param SassColour The colour
-   * @return new SassNumber The alpha component (opacity) of colour
+   * @param SassColour $colour The colour
+   * @return SassNumber The alpha component (opacity) of colour
    * @throws SassScriptFunctionException If $colour is not a colour
    */
   public static function opacity($colour)
@@ -299,9 +299,9 @@ class SassScriptFunctions
 
   /**
    * Changes the hue of a colour while retaining the lightness and saturation.
-   * @param SassColour The colour to adjust
-   * @param SassNumber The amount to adjust the colour by
-   * @return new SassColour The adjusted colour
+   * @param SassColour $colour The colour to adjust
+   * @param SassNumber $degrees The amount to adjust the colour by
+   * @return SassColour The adjusted colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $degrees is not a number
    */
@@ -315,16 +315,16 @@ class SassScriptFunctions
 
   /**
    * Makes a colour lighter.
-   * @param SassColour The colour to lighten
-   * @param SassNumber The amount to lighten the colour by
-   * @param SassBoolean Whether the amount is a proportion of the current value
+   * @param SassColour $colour The colour to lighten
+   * @param SassNumber $amount The amount to lighten the colour by
+   * @param SassBoolean $ofCurrent Whether the amount is a proportion of the current value
    * (true) or the total range (false).
    * The default is false - the amount is a proportion of the total range.
    * If the colour lightness value is 40% and the amount is 50%,
    * the resulting colour lightness value is 90% if the amount is a proportion
    * of the total range, whereas it is 60% if the amount is a proportion of the
    * current value.
-   * @return new SassColour The lightened colour
+   * @return SassColour The lightened colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see lighten_rel
@@ -336,16 +336,16 @@ class SassScriptFunctions
 
   /**
    * Makes a colour darker.
-   * @param SassColour The colour to darken
-   * @param SassNumber The amount to darken the colour by
-   * @param SassBoolean Whether the amount is a proportion of the current value
+   * @param SassColour $colour The colour to darken
+   * @param SassNumber $amount The amount to darken the colour by
+   * @param SassBoolean $ofCurrent Whether the amount is a proportion of the current value
    * (true) or the total range (false).
    * The default is false - the amount is a proportion of the total range.
    * If the colour lightness value is 80% and the amount is 50%,
    * the resulting colour lightness value is 30% if the amount is a proportion
    * of the total range, whereas it is 40% if the amount is a proportion of the
    * current value.
-   * @return new SassColour The darkened colour
+   * @return SassColour The darkened colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see adjust
@@ -357,16 +357,16 @@ class SassScriptFunctions
 
   /**
    * Makes a colour more saturated.
-   * @param SassColour The colour to saturate
-   * @param SassNumber The amount to saturate the colour by
-   * @param SassBoolean Whether the amount is a proportion of the current value
+   * @param SassColour $colour The colour to saturate
+   * @param SassNumber $amount The amount to saturate the colour by
+   * @param SassBoolean $ofCurrentWhether the amount is a proportion of the current value
    * (true) or the total range (false).
    * The default is false - the amount is a proportion of the total range.
    * If the colour saturation value is 40% and the amount is 50%,
    * the resulting colour saturation value is 90% if the amount is a proportion
    * of the total range, whereas it is 60% if the amount is a proportion of the
    * current value.
-   * @return new SassColour The saturated colour
+   * @return SassColour The saturated colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see adjust
@@ -378,16 +378,16 @@ class SassScriptFunctions
 
   /**
    * Makes a colour less saturated.
-   * @param SassColour The colour to desaturate
-   * @param SassNumber The amount to desaturate the colour by
-   * @param SassBoolean Whether the amount is a proportion of the current value
+   * @param SassColour $colour The colour to desaturate
+   * @param SassNumber $amount The amount to desaturate the colour by
+   * @param SassBoolean $ofCurrent Whether the amount is a proportion of the current value
    * (true) or the total range (false).
    * The default is false - the amount is a proportion of the total range.
    * If the colour saturation value is 80% and the amount is 50%,
    * the resulting colour saturation value is 30% if the amount is a proportion
    * of the total range, whereas it is 40% if the amount is a proportion of the
    * current value.
-   * @return new SassColour The desaturateed colour
+   * @return SassColour The desaturateed colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see adjust
@@ -399,14 +399,14 @@ class SassScriptFunctions
 
   /**
    * Makes a colour more opaque.
-   * @param SassColour The colour to opacify
-   * @param SassNumber The amount to opacify the colour by
+   * @param SassColour $colour The colour to opacify
+   * @param SassNumber $amount The amount to opacify the colour by
    * If this is a unitless number between 0 and 1 the adjustment is absolute,
    * if it is a percentage the adjustment is relative.
    * If the colour alpha value is 0.4
    * if the amount is 0.5 the resulting colour alpha value  is 0.9,
    * whereas if the amount is 50% the resulting colour alpha value  is 0.6.
-   * @return new SassColour The opacified colour
+   * @return SassColour The opacified colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see opacify_rel
@@ -420,14 +420,14 @@ class SassScriptFunctions
 
   /**
    * Makes a colour more transparent.
-   * @param SassColour The colour to transparentize
-   * @param SassNumber The amount to transparentize the colour by.
+   * @param SassColour $colour The colour to transparentize
+   * @param SassNumber $amount The amount to transparentize the colour by.
    * If this is a unitless number between 0 and 1 the adjustment is absolute,
    * if it is a percentage the adjustment is relative.
    * If the colour alpha value is 0.8
    * if the amount is 0.5 the resulting colour alpha value  is 0.3,
    * whereas if the amount is 50% the resulting colour alpha value  is 0.4.
-   * @return new SassColour The transparentized colour
+   * @return SassColour The transparentized colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    */
@@ -441,11 +441,11 @@ class SassScriptFunctions
   /**
    * Makes a colour more opaque.
    * Alias for {@link opacify}.
-   * @param SassColour The colour to opacify
-   * @param SassNumber The amount to opacify the colour by
-   * @param SassBoolean Whether the amount is a proportion of the current value
+   * @param SassColour $colour The colour to opacify
+   * @param SassNumber $amount The amount to opacify the colour by
+   * @param SassBoolean $ofCurrent Whether the amount is a proportion of the current value
    * (true) or the total range (false).
-   * @return new SassColour The opacified colour
+   * @return SassColour The opacified colour
    * @throws SassScriptFunctionException If $colour is not a colour or
    * $amount is not a number
    * @see opacify

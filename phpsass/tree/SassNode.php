@@ -61,7 +61,7 @@ class SassNode
 
   /**
    * Constructor.
-   * @param object source token
+   * @param object $token source token
    * @return SassNode
    */
   public function __construct($token)
@@ -71,7 +71,7 @@ class SassNode
 
   /**
    * Getter.
-   * @param string name of property to get
+   * @param string $name name of property to get
    * @return mixed return value of getter function
    */
   public function __get($name)
@@ -85,8 +85,9 @@ class SassNode
 
   /**
    * Setter.
-   * @param string name of property to set
-   * @return mixed value of property
+   * @param string $name name of property to set
+   * @param mixed $value value of property
+   * @throws SassNodeException
    * @return SassNode this node
    */
   public function __set($name, $value)
@@ -141,14 +142,21 @@ class SassNode
     } else {
       $this->children[] = $child;
       $child->parent = $this;
-      $child->root = $this->root;
-    }
-    // The child will have children if a debug node has been added
-    foreach ($child->children as $grandchild) {
-      $grandchild->root = $this->root;
+      $child->setRoot($this->root);
     }
   }
-
+  
+  /**
+   * Sets a root recursively.
+   * @param SassNode the new root node
+   */
+  public function setRoot($root){
+    $this->root = $root;
+    foreach ($this->children as $child) {
+      $child->setRoot($this->root);
+    }
+  }
+  
   /**
    * Returns a value indicating if this node has children
    * @return boolean true if the node has children, false if not
@@ -167,15 +175,18 @@ class SassNode
     return $this->children;
   }
 
-  /**
-   * Returns a value indicating if this node is a child of the passed node.
-   * This just checks the levels of the nodes. If this node is at a greater
-   * level than the passed node if is a child of it.
-   * @return boolean true if the node is a child of the passed node, false if not
-   */
+	/**
+	 * Returns a value indicating if this node is a child of the passed node.
+	 * This just checks the levels of the nodes. If this node is at a greater
+	 * level than the passed node if is a child of it.
+	 *
+	 * @param SassNode $node
+	 *
+	 * @return boolean true if the node is a child of the passed node, false if not
+	 */
   public function isChildOf($node)
   {
-    return $this->level > $node->level;
+    return $this->getLevel() > $node->getLevel();
   }
 
   /**
@@ -314,8 +325,8 @@ class SassNode
 
   /**
    * Evaluates a SassScript expression.
-   * @param string expression to evaluate
-   * @param SassContext the context in which the expression is evaluated
+   * @param string $expression expression to evaluate
+   * @param SassContext $context the context in which the expression is evaluated
    * @return SassLiteral value of parsed expression
    */
   public function evaluate($expression, $context, $x=null)
@@ -327,8 +338,8 @@ class SassNode
 
   /**
    * Replace interpolated SassScript contained in '#{}' with the parsed value.
-   * @param string the text to interpolate
-   * @param SassContext the context in which the string is interpolated
+   * @param string $expression the text to interpolate
+   * @param SassContext $context the context in which the string is interpolated
    * @return string the interpolated text
    */
   public function interpolate($expression, $context)
@@ -340,8 +351,7 @@ class SassNode
 
   /**
    * Adds a warning to the node.
-   * @param string warning message
-   * @param array line
+   * @param string $message warning message
    */
   public function addWarning($message)
   {
@@ -351,7 +361,7 @@ class SassNode
 
   /**
    * Parse the children of the node.
-   * @param SassContext the context in which the children are parsed
+   * @param SassContext $context the context in which the children are parsed
    * @return array the parsed child nodes
    */
   public function parseChildren($context)
@@ -372,7 +382,7 @@ class SassNode
 
   /**
    * Returns a value indicating if the token represents this type of node.
-   * @param object token
+   * @param object $token token
    * @return boolean true if the token represents this type of node, false if not
    */
   public static function isa($token)

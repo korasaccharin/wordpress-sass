@@ -18,11 +18,10 @@ class SassException extends Exception
 {
   /**
    * Sass Exception.
-   * @param string Exception message
-   * @param array parameters to be applied to the message using <code>strtr</code>.
-   * @param object object with source code and meta data
+   * @param string $message Exception message
+   * @param object $object object with source code and meta data
    */
-  public function __construct($message, $object)
+  public function __construct($message, $object = NULL)
   {
     parent::__construct($message . (is_object($object) ? ": {$object->filename}::{$object->line}\nSource: {$object->source}" : ''));
   }

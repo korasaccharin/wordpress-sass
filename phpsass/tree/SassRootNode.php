@@ -44,7 +44,7 @@ class SassRootNode extends SassNode
 
   /**
    * Root SassNode constructor.
-   * @param SassParser Sass parser
+   * @param SassParser $parser Sass parser
    * @return SassNode
    */
   public function __construct($parser)
@@ -65,7 +65,7 @@ class SassRootNode extends SassNode
    * Parses this node and its children into the render tree.
    * Dynamic nodes are evaluated, files imported, etc.
    * Only static nodes for rendering are in the resulting tree.
-   * @param SassContext the context in which this node is parsed
+   * @param SassContext $context the context in which this node is parsed
    * @return SassNode root node of the render tree
    */
   public function parse($context)
@@ -78,7 +78,7 @@ class SassRootNode extends SassNode
 
   /**
    * Render this node.
-   * @return string the rendered node
+   * @return string $context the rendered node
    */
   public function render($context = null)
   {
