@@ -1,4 +1,4 @@
-# WordPress SASS
+# SASS for WordPress
 
 This plugin provides automated SASS stylesheet generation.
 
